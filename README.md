@@ -10,3 +10,6 @@ Notes on working with xarray
 - To do lazily, add a dummy dimension
 - ``` xr.concat(datasets, dim="dummy").sum("dummy") ```
 - https://discourse.pangeo.io/t/tips-for-scalable-spatial-merges-with-many-individual-domains/3658/4
+
+## Proximity
+- xarray-spatial - to do all at once distance type functions
