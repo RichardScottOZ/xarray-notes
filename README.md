@@ -1,6 +1,9 @@
 # xarray-notes
 Notes on working with xarray
 
+## Large Scale Advice
+- Pangeo forum : https://discourse.pangeo.io/
+
 ## Rasters
 - rioxarray gives you helpers as a high level interface into rasterio - highly recommended!
 - I like the CET Perceptually Uniform colormaps to use here as well https://colorcet.com/download/index.html [also versons for QGIS]
