@@ -8,6 +8,10 @@ Notes on working with xarray
 - rioxarray gives you helpers as a high level interface into rasterio - highly recommended!
 - I like the CET Perceptually Uniform colormaps to use here as well https://colorcet.com/download/index.html [also versons for QGIS]
 
+## General
+- odc-geo
+	- Has some good tools for working in 2D, cogs, dask-backed reprojection, 3 band creation, colorsation and others
+
 ## Rasterisation
 - geocube is a good high level api
 	- limitation: taps out at integer limit in resolution, have to drop down to something lower level to do that
