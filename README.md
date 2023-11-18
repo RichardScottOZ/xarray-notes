@@ -15,6 +15,7 @@ Notes on working with xarray
 
 ## Location Sampling
 - Getting data from a grid is often of interest - you can do this in all at once fashion by using xarray to index and return a dataframe
+
 ```
 def location_sample(gdf, da, name_col):
     """
