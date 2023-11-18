@@ -90,3 +90,8 @@ with rasterio.open(f) as src:
             thermal_match.rio.to_raster(r'J:\test.tif')
 ```			
 
+## Zarr
+- Possible problems
+	- can have problems with unicode - remove encoding
+	- problems with zarr chunk encoding - remove encoding
+	- problems with zarr chunks between variables - open dataset with set chunks
