@@ -52,3 +52,33 @@ def location_sample(gdf, da, name_col):
 ## Utility
 - A bunch of helper functions I use here and there for speeding up plotting, reading files https://github.com/RichardScottOZ/richardutils/blob/main/src/richardutils/richardutils.py
 
+## Warped VRT
+- To enable out of memory reprojection
+```python
+dst_crs = CRS.from_epsg(4326)
+
+xres = (right - left) / dst_width
+yres = (top - bottom) / dst_height
+dst_transform = affine.Affine(xres, 0.0, left,
+                              0.0, -yres, top)
+
+vrt_options = {
+    'resampling': Resampling.nearest,
+    'crs': dst_crs,
+    'transform': dst_transform,
+    'height': dst_height,
+    'width': dst_width,
+}
+
+f = r'thermal_endmembers.vrt'
+epsg_to = 4326
+
+with rasterio.open(f) as src:
+    print('Source CRS:' +str(src.crs))
+    with WarpedVRT(src, **vrt_options) as vrt:
+        print('Destination CRS:' +str(vrt.crs))
+        with ProgressBar():
+            thermal_match = rioxarray.open_rasterio(vrt, chunks=(1, 8000,8000))
+            thermal_match.rio.to_raster(r'J:\test.tif')
+```			
+
