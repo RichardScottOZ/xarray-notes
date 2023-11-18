@@ -43,7 +43,7 @@ def location_sample(gdf, da, name_col):
 ```
 	
 ## Proximity
-- xarray-spatial - to do all at once distance type functions
+- xarray-spatial - to do all at once distance type functions - requires a little finagling into the dimension format they need
 
 ## Utility
 - A bunch of helper functions I use here and there for speeding up plotting, reading files https://github.com/RichardScottOZ/richardutils/blob/main/src/richardutils/richardutils.py
