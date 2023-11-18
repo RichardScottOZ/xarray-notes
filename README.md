@@ -4,7 +4,6 @@ Notes on working with xarray
 ## Rasters
 - rioxarray gives you helpers as a high level interface into rasterio - highly recommended!
 - I like the CET Perceptually Uniform colormaps to use here as well https://colorcet.com/download/index.html [also versons for QGIS]
-- 
 
 ## Rasterisation
 - geocube is a good high level api
