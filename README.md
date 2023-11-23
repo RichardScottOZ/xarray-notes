@@ -95,3 +95,22 @@ with rasterio.open(f) as src:
 	- can have problems with unicode - remove encoding
 	- problems with zarr chunk encoding - remove encoding
 	- problems with zarr chunks between variables - open dataset with set chunks
+
+## Raster padding
+- sometimes people pad the edges of rasters with no data - which is of no use for ML
+- to fix
+
+wte = tif_dict(r'C:\Users\rscott\dodgytifdir')  # see richardutils
+ 
+for key in wte:
+	#nodata value = -100000000.0
+	print(key, wte[key].min().values, wte[key].max().values,  wte[key].rio.nodata, wte[key].rio.encoded_nodata)
+	# get rid of possible nodata
+	wte[key] = wte[key].where(wte[key]  > -100000000.0, drop=True)
+	# make any nulls left nodata 
+	wte[key] = wte[key].fillna(-100000000.0)
+	
+	print(key, wte[key].min().values, wte[key].max().values,  wte[key].rio.nodata, wte[key].rio.encoded_nodata)
+	da = wte[key]
+	da.rio.write_nodata(-100000000.0,inplace=True)
+	da.rio.to_raster(r'C:\Users\rscott\Downloads\fixedtifs' + "\\" + key)
