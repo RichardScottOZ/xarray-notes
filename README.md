@@ -96,6 +96,16 @@ with rasterio.open(f) as src:
 	- problems with zarr chunk encoding - remove encoding
 	- problems with zarr chunks between variables - open dataset with set chunks
 
+    ```python
+    for v in list(ds.coords.keys()):
+        if ds.coords[v].dtype == object:
+            ds.coords[v] = ds.coords[v].astype("unicode")
+
+    for v in list(ds.variables.keys()):
+        if ds[v].dtype == object:
+            ds[v] = ds[v].astype("unicode")
+    ```
+
 ## Raster padding
 - sometimes people pad the edges of rasters with no data - which is of no use for ML
 - to fix
