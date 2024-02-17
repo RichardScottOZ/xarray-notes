@@ -110,6 +110,7 @@ with rasterio.open(f) as src:
 - sometimes people pad the edges of rasters with no data - which is of no use for ML
 - to fix
 
+```python
 wte = tif_dict(r'C:\Users\rscott\dodgytifdir')  # see richardutils
  
 for key in wte:
@@ -124,3 +125,5 @@ for key in wte:
 	da = wte[key]
 	da.rio.write_nodata(-100000000.0,inplace=True)
 	da.rio.to_raster(r'C:\Users\rscott\Downloads\fixedtifs' + "\\" + key)
+
+    ```
