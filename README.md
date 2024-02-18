@@ -158,7 +158,7 @@ points = np.array([gdfSB.geometry.x.to_list(),gdfSB.geometry.y.to_list()])
 v = gdfSB['THING_TO_GRID'].to_list()
 #vinterp = griddata(points.T, v, (X, Y, Z), method='nearest')
 
-vinterp = griddata(points.T, v, (X, Y), method='linear')
+vinterp = griddata(points.T, v, (X, Y), method='linear')  ## use nearest for other uses,e tc
 print(vinterp.shape)
 
 
