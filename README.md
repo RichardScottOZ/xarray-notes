@@ -128,6 +128,40 @@ for key in wte:
 
 ```
 
+## Naive scipy gridding
+#X = np.linspace(bb[0],bb[2],1000)
+#Y = np.linspace(bb[1],bb[3],1000)
+
+#xi = gdf["X3107"].to_numpy()
+#yi = gdf["Y3107"].to_numpy()
+#zi = gdf["Z"].to_numpy()
+#sgi = gdf["OTHER_THING_TO_GRID"].to_numpy()
+#srcwidth = 1000
+#srcheight = 1000
+
+gdfSB 
+
+bb = gdfSB.total_bounds
+
+srcwidth = int(width / 200)
+srcheight = int(height / 200)
+
+X = np.linspace(bb[0],bb[2],srcwidth)
+Y = np.linspace(bb[1],bb[3],srcheight)
+#Z = np.linspace(z0, altitude,srcdepth)  #need an altitude
+#X, Y, Z = np.meshgrid(X, Y, Z)
+X, Y = np.meshgrid(X, Y)
+#print(X.shape, Y.shape, Z.shape)
+print(X.shape, Y.shape)
+
+points = np.array([gdfSB.geometry.x.to_list(),gdfSB.geometry.y.to_list()])
+v = gdfSB['THING_TO_GRID'].to_list()
+#vinterp = griddata(points.T, v, (X, Y, Z), method='nearest')
+
+vinterp = griddata(points.T, v, (X, Y), method='linear')
+print(vinterp.shape)
+
+
 ## Errors
 
 - ValueError: zero-size array to reduction operation maximum which has no identity
