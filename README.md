@@ -126,4 +126,9 @@ for key in wte:
 	da.rio.write_nodata(-100000000.0,inplace=True)
 	da.rio.to_raster(r'C:\Users\rscott\Downloads\fixedtifs' + "\\" + key)
 
-    ```
+```
+
+## Errors
+
+- ValueError: zero-size array to reduction operation maximum which has no identity
+    - a zero dimension this means, which is not too useful - so needs to be fixed or bypassed in logic
