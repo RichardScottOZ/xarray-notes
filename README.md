@@ -10,7 +10,7 @@ Notes on working with xarray
 
 ## 2D
 - odc-geo
-	- Has some good tools for working in 2D, cogs, dask-backed reprojection, 3 band creation, colorsation and others
+	- Has some good tools for working in 2D, cogs, dask-backed reprojection, 3 band creation, colorisation and others
 	
 ## 3D
 - pyvista-xarray
