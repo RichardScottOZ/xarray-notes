@@ -106,6 +106,11 @@ with rasterio.open(f) as src:
             ds[v] = ds[v].astype("unicode")
     ```
 
+## long name handling
+- if bands have names and you wanted to output them, here's a one-liner
+    - image = image.rename({band:image[band].attrs["long_name"] for band in image})    https://github.com/corteva/rioxarray/issues/736
+
+
 ## Raster padding
 - sometimes people pad the edges of rasters with no data - which is of no use for ML
 - to fix
