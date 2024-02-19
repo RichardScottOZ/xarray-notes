@@ -166,6 +166,8 @@ v = gdfSB['THING_TO_GRID'].to_list()
 vinterp = griddata(points.T, v, (X, Y), method='linear')  ## use nearest for other uses,e tc
 print(vinterp.shape)
 
+## interpolating for padding
+- https://docs.xarray.dev/en/stable/generated/xarray.DataArray.interpolate_na.html
 
 ## Errors
 
