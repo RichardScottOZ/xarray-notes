@@ -169,6 +169,37 @@ print(vinterp.shape)
 ## interpolating for padding
 - https://docs.xarray.dev/en/stable/generated/xarray.DataArray.interpolate_na.html
 
+## geocube - rasterisation of polygons - dask backed
+- https://github.com/corteva/geocube/issues/41
+```python
+def make_geocube_like_dask2(
+        df: gpd.GeoDataFrame,
+        measurements: Optional[List[str]],
+        like: xr.core.dataarray.DataArray,
+        fill: int=0,
+        rasterize_function:callable=partial(geocube.rasterize.rasterize_image, all_touched=True),
+        **kwargs
+):
+    def rasterize_block(block):
+        return(
+            make_geocube(
+                df,
+                measurements=measurements,
+                like=block,
+                fill=fill,
+                rasterize_function=rasterize_function,
+            )
+            .to_array(measurements[0])
+            .assign_coords(block.coords)
+        )
+
+    like = like.rename(dict(zip(['band'], measurements)))
+    return like.map_blocks(
+        rasterize_block,
+        template=like
+    )
+```
+
 ## Errors
 
 - ValueError: zero-size array to reduction operation maximum which has no identity
