@@ -200,7 +200,11 @@ def make_geocube_like_dask2(
     )
 ```
 
+## pangeo
+- xbatcher cloud streaming talk Joe Hamman https://www.youtube.com/watch?v=HYvhj9W2qHQ&t=661s
+
 ## Errors
 
 - ValueError: zero-size array to reduction operation maximum which has no identity
     - a zero dimension this means, which is not too useful - so needs to be fixed or bypassed in logic
+
