@@ -211,4 +211,9 @@ def make_geocube_like_dask2(
 ## ESRI
 - gdal can deal with terrible GDB rasters
 - gemgis has a builtin https://github.com/cgre-aachen/gemgis/issues/302
-- 
+
+ ```python
+import gemgis
+from gemgis.raster import read_raster_gdb
+read_raster_gdb('crappy_raster_database_here.gdb')
+
