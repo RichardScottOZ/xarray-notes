@@ -217,3 +217,7 @@ import gemgis
 from gemgis.raster import read_raster_gdb
 read_raster_gdb('crappy_raster_database_here.gdb')
 
+#this exports all the raster subdatasets for you
+```
+
+
