@@ -208,3 +208,7 @@ def make_geocube_like_dask2(
 - ValueError: zero-size array to reduction operation maximum which has no identity
     - a zero dimension this means, which is not too useful - so needs to be fixed or bypassed in logic
 
+## ESRI
+- gdal can deal with terrible GDB rasters
+- gemgis has a builtin https://github.com/cgre-aachen/gemgis/issues/302
+- 
