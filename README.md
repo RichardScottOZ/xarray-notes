@@ -200,6 +200,9 @@ def make_geocube_like_dask2(
     )
 ```
 
+## lazy concat trick
+- nd = xr.concat(newlist, dim='dummy').mean(dim='dummy',keep_attrs=True)
+
 ## pangeo
 - xbatcher cloud streaming talk Joe Hamman https://www.youtube.com/watch?v=HYvhj9W2qHQ&t=661s
 
