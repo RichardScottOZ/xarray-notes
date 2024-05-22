@@ -28,7 +28,7 @@ Notes on working with xarray
 ## Location Sampling
 - Getting data from a grid is often of interest - you can do this in all at once fashion by using xarray to index and return a dataframe
 
-```
+```python
 def location_sample(gdf, da, name_col):
     """
     Returns a dataframe of points sample from a DataArray by location at once
@@ -134,6 +134,7 @@ for key in wte:
 ```
 
 ## Naive scipy gridding
+```python
 #X = np.linspace(bb[0],bb[2],1000)
 #Y = np.linspace(bb[1],bb[3],1000)
 
