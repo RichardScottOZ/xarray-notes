@@ -226,6 +226,9 @@ from gemgis.raster import read_raster_gdb
 read_raster_gdb('crappy_raster_database_here.gdb')
 
 #this exports all the raster subdatasets for you
+
+
+
 ```
 
 
@@ -233,3 +236,13 @@ read_raster_gdb('crappy_raster_database_here.gdb')
 vars_list = list(xr_df.data_vars)  
     for var in vars_list:  
         del xr_df[var].attrs['grid_mapping']
+
+
+## Fix backwards y-coords for a raster
+```python
+structures = structures.assign_coords(y=structures.y * -1)
+structures_age_confid = structures_age_confid.assign_coords(y=structures_age_confid.y * -1)
+# fix the transform
+from affine import Affine
+new_transform = Affine(0.016666666666666666, 0.0, -180.0, 0.0, -0.016666666666666666, 89.98333333333332)
+```
