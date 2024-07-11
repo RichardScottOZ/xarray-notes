@@ -233,10 +233,11 @@ read_raster_gdb('crappy_raster_database_here.gdb')
 
 
 ## Attribute issues
+```python
 vars_list = list(xr_df.data_vars)  
     for var in vars_list:  
         del xr_df[var].attrs['grid_mapping']
-
+```
 
 ## Fix backwards y-coords for a raster
 ```python
