@@ -247,3 +247,39 @@ structures_age_confid = structures_age_confid.assign_coords(y=structures_age_con
 from affine import Affine
 new_transform = Affine(0.016666666666666666, 0.0, -180.0, 0.0, -0.016666666666666666, 89.98333333333332)
 ```
+
+### pygplates/gplately
+```python
+rasterfile = 'somedirectory/pasthistory_data.tif'
+
+print("RASTERFILE:",rasterfile)
+da = rioxarray.open_rasterio(rasterfile)
+
+use_model = gplately.PlateReconstruction(rot_file)
+#extent = [ da.rio.bounds()[0],da.rio.bounds()[2],da.rio.bounds()[1],da.rio.bounds()[3] ]
+extent = [ da.rio.bounds()[0],da.rio.bounds()[2],da.rio.bounds()[3],da.rio.bounds()[1] ]
+#extent = [-180,180,-90,90]
+print("EXTENT:",extent)
+
+print(da)
+
+raster = gplately.Raster(da.variable.data[0],
+			  plate_reconstruction=use_model, 
+			  extent=extent,
+			  time=time)
+    
+print("PLATE POLYS:", plate_polys)
+
+print("RECONSTRUCTING: ",time,'present_day' + "\\" + tif)
+reverse_reconstructed = raster.reconstruct(0, fill_value=np.nan, partitioning_features=plate_polys)
+
+dapresent = copy.deepcopy(da)
+
+dapresent.values = reverse_reconstructed.data.reshape(dapresent.values.shape[0], dapresent.values.shape[1],dapresent.values.shape[2])
+
+print(dapresent)
+
+print("WRITING:",'present_day' + "\\" + tif)
+#dapresent = dapresent.astype('float32')
+dapresent.rio.to_raster('present_day' + "\\" + tif)
+```
