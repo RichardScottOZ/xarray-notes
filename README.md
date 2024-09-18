@@ -283,3 +283,12 @@ print("WRITING:",'present_day' + "\\" + tif)
 #dapresent = dapresent.astype('float32')
 dapresent.rio.to_raster('present_day' + "\\" + tif)
 ```
+
+## hdf5 errors
+
+- [Errno -101] NetCDF: HDF error: '/home/rscott/data/STELLAR-BHP/SeaFloorAgeGrids-MantleFrame/agegrid-0.nc'
+
+- use
+- import netCDF4  at the start before anything else uses HDF
+
+
