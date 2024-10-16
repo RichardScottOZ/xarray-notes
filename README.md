@@ -250,7 +250,7 @@ new_transform = Affine(0.016666666666666666, 0.0, -180.0, 0.0, -0.01666666666666
 ```
 
 ## Fix 360 degree xcoordinate problems that have already translated to -180 and 180 incorrectly
-```
+```python
     def fix_x(test2, strdim):
         test2 = test2.transpose(strdim,"y","x")
         test2['x'] = test2['x'] - 180
