@@ -247,6 +247,11 @@ structures_age_confid = structures_age_confid.assign_coords(y=structures_age_con
 from affine import Affine
 new_transform = Affine(0.016666666666666666, 0.0, -180.0, 0.0, -0.016666666666666666, 89.98333333333332)
 
+or another case
+
+tt = tt.isel(y=slice(None, None, -1))
+
+
 ```
 
 ## Fix 360 degree xcoordinate problems that have already translated to -180 and 180 incorrectly
