@@ -11,6 +11,9 @@ Notes on working with xarray
 ## 2D
 - odc-geo
 	- Has some good tools for working in 2D, cogs, dask-backed reprojection, 3 band creation, colorisation and others
+ - GTI Driver
+ 	- New in GDAL 3.9 - allows on the fly lazy tile indexing with a vector dataset - try FlatGeoBuf - with a location of the file and a bounding box for each raster in the CRS
+   	- Handles any number of files or projections
 	
 ## 3D
 - pyvista-xarray
